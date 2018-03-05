@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Contact Form</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Contact Form" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ if (window.scrollY == 0) window.scrollTo(0,1); }; </script>
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
+<link rel="stylesheet" href="css/font-awesome.min.css" type="text/css" media="all" />
+<link href="https://fonts.googleapis.com/css?family=Courgette" rel="stylesheet"> 
+<script src="js/jquery-3.3.1.js"></script>
+<script src="js/bootstrap.js"></script>
+<script>
+function validateEmail(elementValue)
+{
+   var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+   return emailPattern.test(elementValue); 
+}
+
+function validate()
+{
+	if(document.getElementById('enq_name').value=="")
+	{
+		document.getElementById('enq_name').style.borderColor = 'red';
+		document.getElementById('enq_name').focus();
+		return(false)
+	}
+	else
+	{	
+		document.getElementById('enq_name').style.borderColor = '#ccc';
+		document.getElementById('enq_email').focus();
+	}
+	if(document.getElementById('enq_email').value=="")
+	{
+		document.getElementById('enq_email').style.borderColor = 'red';
+		document.getElementById('enq_email').focus();
+		return(false)
+	}
+	else if(!validateEmail(document.getElementById('enq_email').value))
+    {
+		document.getElementById('enq_email').style.borderColor = 'red';
+		document.getElementById('enq_email').focus();
+        return false;
+    }
+	else
+	{	
+		document.getElementById('enq_email').style.borderColor = '#ccc';
+		document.getElementById('enq_phone').focus();
+	}
+	var len = document.getElementById('enq_phone').value;
+	if(len.length < 5)
+	{
+		document.getElementById('enq_phone').style.borderColor = 'red';
+		document.getElementById('enq_phone').focus();
+		return(false)
+	}
+	else
+	{	
+		document.getElementById('enq_phone').style.borderColor = '#ccc';
+		document.getElementById('enq_query').focus();
+	}
+	if(document.getElementById('enq_query').value=="")
+	{
+		document.getElementById('enq_query').style.borderColor = 'red';
+		document.getElementById('enq_query').focus();
+		return(false)
+	}
+	else
+	{	
+		return(true)
+	}
+}
+</script>
+</head>
+<body>
+	<div class="contact">
+		<div class="container">
+			<div class="contact-main">
+				<div class="contact-top">
+					<h3>Get In Touch</h3>
+					<div class="underline-center-2"></div>
+				</div>
+				<div class="contact-bottom">
+					<div class="col-md-6 col-md-push-3 contact-left">
+						<form action="submit.php" method="post"  onSubmit="return validate()" autocomplete="off">
+							<input type="text" name="enq_name" id="enq_name" autocomplete="off" placeholder="Name">
+							<input type="email" name="enq_email" id="enq_email" autocomplete="off" placeholder="Email Address">					
+							<input type="phone" name="enq_phone" id="enq_phone" autocomplete="off" placeholder="Contact Number">
+							<textarea rows="4" cols="50" name="enq_query" id="enq_query" autocomplete="off" placeholder="Message"></textarea>
+							<input type="submit" name="submit" id="submit" value="Send Message">
+							<input value="" class="resetbtn" style="display:none" type="reset">
+							<input type="hidden" name="check" value="OK">
+						</form>
+					</div>
+					<div class="col-md-6"></div>
+				</div>
+			</div>
+		</div>
+	</div>	
+</body>
+</html>
